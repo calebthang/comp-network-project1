@@ -1,0 +1,215 @@
+:root {
+    --primary-color: #00ff88;
+    --secondary-color: #1a1a1a;
+    --accent-color: #0088ff;
+    --text-color: #ffffff;
+    --bg-color: #0a0a0a;
+    --card-bg: #1e1e1e;
+    --glow-color: rgba(0, 255, 136, 0.3);
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 var(--glow-color); }
+    70% { box-shadow: 0 0 10px 10px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    background: linear-gradient(45deg, #0a0a0a, #1a1a1a, #2a2a2a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px var(--glow-color);
+}
+
+header p {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+nav {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+    background: rgba(0, 255, 136, 0.1);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(0, 255, 136, 0.1);
+    transition: all 0.3s ease;
+    animation: float 6s ease-in-out infinite;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px var(--glow-color);
+    border-color: var(--primary-color);
+}
+
+.network-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.network-info .card {
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+    animation: pulse 2s infinite;
+}
+
+.network-info h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+#security ul {
+    list-style: none;
+    padding: 0;
+}
+
+#security li {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+#security li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    border-top: 2px solid var(--primary-color);
+    backdrop-filter: blur(10px);
+    margin-top: 2rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    min-height: calc(100vh - 200px); /* Ensures main content has minimum height */
+}
+
+/* Glowing text effect */
+.glow-text {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--glow-color);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .network-info {
+        grid-template-columns: 1fr;
+    }
+}
